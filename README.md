@@ -78,8 +78,8 @@ A responsive, full-stack flight booking platform inspired by Booking.com, tailor
 
 1. **Clone the repository**
     ```
-    git clone https://github.com/your-username/flight-booking-app.git
-    cd flight-booking-app
+    git clone https://github.com/NishantM11/flight-booking.git
+    cd flight-booking
     ```
 
 2. **Install dependencies**
