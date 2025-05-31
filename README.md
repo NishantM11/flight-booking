@@ -116,13 +116,13 @@ A responsive, full-stack flight booking platform inspired by Booking.com, tailor
 ## Folder Structure
 
 flight-booking-app/
-├── client/        # React frontend
-│   ├── src/
-│   └── public/
-├── server/        # Node.js/Express backend
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
+├── client/ # React frontend
+│ ├── src/
+│ └── public/
+├── server/ # Node.js/Express backend
+│ ├── controllers/
+│ ├── models/
+│ ├── routes/
+│ └── utils/
 ├── README.md
 └── .env.example
