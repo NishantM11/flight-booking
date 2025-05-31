@@ -107,10 +107,3 @@ A responsive, full-stack flight booking platform inspired by Booking.com, tailor
         npm start
         ```
 
-5. **Access the app**
-    - Frontend: [http://localhost:3000](http://localhost:3000)
-    - Backend API: [http://localhost:5000](http://localhost:5000)
-
----
-
-<pre> ``` flight-booking-app/ ├── frontend/ # React frontend │ ├── src/ │ └── public/ ├── backend/ # Node.js/Express backend │ ├── controllers/ │ ├── models/ │ ├── routes/ │ └── utils/ ├── README.md └── .env.example ``` </pre>
