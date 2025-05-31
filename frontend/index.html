@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlightBook India - Book Domestic Flights</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/c6d8b7a575eee19434543076c08224ee/ffcc0f68-ba34-4681-ac3c-ce38993f7b35/9347133b.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container flex justify-between items-center">
+            <div class="nav__brand">
+                <h2>FlightBook India</h2>
+            </div>
+            <div class="nav__links flex gap-16">
+                <a href="#" class="nav__link">Flights</a>
+                <a href="#" class="nav__link">Hotels</a>
+                <a href="#" class="nav__link">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Book Your Perfect Flight</h1>
+                    <p class="hero__subtitle">Find and book flights across India at the best prices</p>
+                </div>
+                
+                <div class="search-form card">
+                    <div class="card__body">
+                        <form id="flight-search-form">
+                            <div class="search-form__grid">
+                                <div class="form-group">
+                                    <label class="form-label" for="origin">From</label>
+                                    <select id="origin" class="form-control" required>
+                                        <option value="">Select Origin</option>
+                                        <option value="DEL" selected>Delhi (DEL)</option>
+                                        <option value="BOM">Mumbai (BOM)</option>
+                                        <option value="BLR">Bangalore (BLR)</option>
+                                        <option value="MAA">Chennai (MAA)</option>
+                                        <option value="CCU">Kolkata (CCU)</option>
+                                        <option value="HYD">Hyderabad (HYD)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="destination">To</label>
+                                    <select id="destination" class="form-control" required>
+                                        <option value="">Select Destination</option>
+                                        <option value="DEL">Delhi (DEL)</option>
+                                        <option value="BOM" selected>Mumbai (BOM)</option>
+                                        <option value="BLR">Bangalore (BLR)</option>
+                                        <option value="MAA">Chennai (MAA)</option>
+                                        <option value="CCU">Kolkata (CCU)</option>
+                                        <option value="HYD">Hyderabad (HYD)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="departure-date">Departure</label>
+                                    <input type="date" id="departure-date" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="return-date">Return</label>
+                                    <input type="date" id="return-date" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="passengers">Passengers</label>
+                                    <select id="passengers" class="form-control">
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2" selected>2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5 Passengers</option>
+                                        <option value="6">6 Passengers</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="travel-class">Class</label>
+                                    <select id="travel-class" class="form-control">
+                                        <option value="economy">Economy</option>
+                                        <option value="business">Business</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn--primary btn--lg btn--full-width mt-16" id="search-button">
+                                Search Flights
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Screen -->
+    <div id="search-screen" class="screen">
+        <div class="container py-16">
+            <div class="search-header">
+                <h2>Available Flights</h2>
+                <div class="search-summary">
+                    <span id="route-summary">Delhi → Mumbai</span>
+                    <span id="date-summary">Wed, 1 Jun 2025</span>
+                    <span id="passenger-summary">2 Passengers, Economy</span>
+                </div>
+                <button id="back-to-search" class="btn btn--outline">Modify Search</button>
+            </div>
+            
+            <div class="search-content">
+                <div class="filters-sidebar">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Filters</h3>
+                            
+                            <div class="filter-group">
+                                <h4>Price Range</h4>
+                                <div class="price-range">
+                                    <input type="range" id="price-min" min="2000" max="15000" value="2000">
+                                    <input type="range" id="price-max" min="2000" max="15000" value="15000">
+                                    <div class="price-range-labels">
+                                        <span id="price-min-label">₹2,000</span>
+                                        <span id="price-max-label">₹15,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Airlines</h4>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="IndiGo" checked> IndiGo</label>
+                                    <label><input type="checkbox" value="Air India" checked> Air India</label>
+                                    <label><input type="checkbox" value="SpiceJet" checked> SpiceJet</label>
+                                    <label><input type="checkbox" value="Vistara" checked> Vistara</label>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h4>Sort By</h4>
+                                <select id="sort-flights" class="form-control">
+                                    <option value="price">Price (Low to High)</option>
+                                    <option value="duration">Duration</option>
+                                    <option value="departure">Departure Time</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flights-list">
+                    <div id="flights-container">
+                        <!-- Flight cards will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Screen -->
+    <div id="booking-screen" class="screen">
+        <div class="container py-16">
+            <div class="booking-header">
+                <h2>Complete Your Booking</h2>
+                <button id="back-to-results" class="btn btn--outline">Back to Results</button>
+            </div>
+            
+            <div class="booking-content">
+                <div class="booking-sidebar">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Flight Summary</h3>
+                            <div id="selected-flight-summary">
+                                <!-- Selected flight details -->
+                            </div>
+                            
+                            <div class="price-breakdown">
+                                <h4>Price Breakdown</h4>
+                                <div class="price-row">
+                                    <span>Base Fare × <span id="passenger-count">1</span></span>
+                                    <span id="base-fare-total" class="rupee-amount">₹4,500</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Taxes & Fees</span>
+                                    <span id="taxes-fees" class="rupee-amount">₹540</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Seat Selection</span>
+                                    <span id="seat-charges" class="rupee-amount">₹0</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span>Total</span>
+                                    <span id="total-amount" class="rupee-amount">₹5,040</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="booking-form">
+                    <form id="passenger-form">
+                        <div class="card mb-16">
+                            <div class="card__body">
+                                <h3>Passenger Details</h3>
+                                <div id="passenger-forms-container">
+                                    <!-- Passenger forms will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-16">
+                            <div class="card__body">
+                                <h3>Seat Selection <span class="required-text">(Select <span id="seats-required">2</span> seats)</span></h3>
+                                <div class="seat-map">
+                                    <div class="seat-legend">
+                                        <div class="legend-item">
+                                            <div class="seat available"></div>
+                                            <span>Available</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="seat selected"></div>
+                                            <span>Selected</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="seat occupied"></div>
+                                            <span>Occupied</span>
+                                        </div>
+                                    </div>
+                                    <div id="seat-map-container">
+                                        <!-- Seat map will be generated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--lg btn--full-width" id="confirm-booking-btn">
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Screen -->
+    <div id="confirmation-screen" class="screen">
+        <div class="container py-16">
+            <div class="confirmation-card card">
+                <div class="card__body">
+                    <div class="confirmation-header">
+                        <div class="success-icon">✈️</div>
+                        <h2>Booking Confirmed!</h2>
+                        <p>Your flight has been successfully booked</p>
+                    </div>
+                    
+                    <div class="booking-reference">
+                        <h3>Booking Reference</h3>
+                        <div class="reference-number" id="booking-reference">FB123456789</div>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <h3>Flight Details</h3>
+                        <div id="confirmed-flight-details">
+                            <!-- Flight details will be populated here -->
+                        </div>
+                        
+                        <h3>Passenger Information</h3>
+                        <div id="confirmed-passenger-details">
+                            <!-- Passenger details will be populated here -->
+                        </div>
+                        
+                        <div class="final-price">
+                            <h3>Total Paid</h3>
+                            <div id="final-amount" class="rupee-amount large">₹5,040</div>
+                        </div>
+                    </div>
+                    
+                    <div class="confirmation-actions">
+                        <button class="btn btn--primary btn--lg" onclick="window.print()">
+                            Download Boarding Pass
+                        </button>
+                        <button id="new-search" class="btn btn--outline btn--lg">
+                            Book Another Flight
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/c6d8b7a575eee19434543076c08224ee/910f2b4b-09be-4c32-8bf4-b80ba76e9b47/bda50a10.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
